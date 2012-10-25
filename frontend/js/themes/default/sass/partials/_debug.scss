@@ -1,0 +1,57 @@
+/* own styles follow here */
+
+#debugPanel {
+
+  .debugMenu {
+    background-color: yellow;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 20px;
+    height: 50px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    li {
+      display: inline;
+    }
+    &:hover, &.expanded {
+      width: 200px;
+    }
+    &.errorAdded, &.expanded.errorAdded {
+      width: 200px;
+      background-color: red;
+    }
+  }
+  .debugContent .trace {
+    display: none;
+    padding-left: 2em;
+    background-color: #f0dddd;
+    font-size: 12px;
+  }
+
+  .debugpanel-message {
+    .button-show-details,
+    .button-show-trace {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+
+    }
+    .button-show-details {
+      background-color: green;
+      cursor: pointer;
+    }
+    .button-show-trace {
+      background-color: orange;
+      cursor: pointer;
+    }
+  }
+}
+
+.collapsed {
+  display: none;
+}

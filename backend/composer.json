@@ -1,0 +1,10 @@
+{
+	"require": {
+
+		"doctrine/orm": "2.2.1",
+		"symfony/console": "2.*",
+        "foglcz/jsonrpc2": "*"
+	}
+
+
+}

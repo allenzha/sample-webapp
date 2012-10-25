@@ -1,0 +1,24 @@
+<div class="debugpanel-message message-type-{{type}}">
+    <div class="header">
+
+        {{#details}}
+            <span class="button-show-details"></span>
+        {{/details}}
+        {{#trace}}
+            <span class="button-show-trace"></span>
+        {{/trace}}
+
+        <span class="message-time">[{{time}}] - </span>
+        <span class="message-type">[{{type}}] - </span>
+        <span class="message-code">[{{code}}] - </span>
+        <span class="message-title">{{title}}</span>
+    </div>
+
+    {{#details}}
+        <div class="details collapsed">{{{details}}}</div>
+    {{/details}}
+    {{#trace}}
+
+        <div class="trace collapsed">{{{trace}}}</div>
+    {{/trace}}
+</div>

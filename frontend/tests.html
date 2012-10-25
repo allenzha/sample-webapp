@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>App</title>
+  <meta name="description" content="">
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="js/themes/default/css/style.css">
+  <link rel="stylesheet" href="js/lib/jasmine/jasmine.css">
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <script src="js/lib/modernizr/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+
+
+  <header>
+
+  </header>
+  <div role="main">
+      <div id='page-container'>
+          <!-- gets filled by javascript don't put anything important here -->
+          <div id='page-loading-container'>
+              <img src='images/ajax-loader.gif' />
+          </div>
+      </div>
+  </div>
+  <footer>
+
+  </footer>
+
+  <script type="text/javascript">
+      //Config for require.js
+      var require = {
+
+          baseUrl: "js",    //base url were our scripts are
+
+          //The main libs have some ugly paths we don't want to rewrite everytime we use them
+          //so a pathmapping is done here:
+          paths: {
+              //from                to
+              "jsonrpc":            "lib/jquery-jsonrpc/jquery-jsonrpc",
+              "underscore":         "lib/underscore/underscore",
+              "backbone":           "lib/backbone/backbone",
+              "toolbox":            "lib/toolbox/toolbox",
+              "mustache":           "lib/mustache/mustache",
+              "stacktrace":         "lib/stacktrace/stacktrace-0.3"
+          },
+          waitSeconds: 5,               //timeout (for loading required modules)
+          catchError: {define: true}    //show errors
+      };
+
+  </script>
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+  <!-- load require-jquery (require.js bundled with jquery 1.7.2) -->
+  <script type="text/javascript" src="js/lib/jquery/require-jquery.js"></script>
+
+  <!-- Include jasmine here -->
+  <script type="text/javascript" src="js/lib/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="js/lib/jasmine/jasmine-html.js"></script>
+
+  <!-- include specs here -->
+  <script type="text/javascript">
+
+      var jasmineEnv = jasmine.getEnv();
+
+      require(["_tests/test"], function(spec) {
+          console.log(jasmine);
+
+          jasmineEnv.updateInterval = 1000;
+
+          var trivialReporter = new jasmine.TrivialReporter();
+
+          jasmineEnv.addReporter(trivialReporter);
+          jasmineEnv.specFilter = function(spec) {
+              return trivialReporter.specFilter(spec);
+          }
+
+          jasmineEnv.execute();
+      });
+
+  </script>
+
+</body>
+</html>
